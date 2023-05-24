@@ -1,10 +1,22 @@
-const width = 2;
-const height = 5;
-const space = width * height;
-const newWidth = width - 4;
-const volume = 2 ** 3;
-console.log(volume);
+// Операторы присваивания
+let age = 10 + 10;
+age += 2; // age = age + 2
+age -= 3; // age = age - 3
+age *= 2; // age = age * 2
+age /= 2; // age = age / 2
 
-const street = "Pushkin";
-const houseName = "Kolotushkin";
-console.log(street + ", " + houseName + " " + 5); // lesson2
+age++; // age = age + 1
+age--; // age = age - 1
+
+console.log(age);
+
+// Операторы сравнения
+
+const denis = 35;
+console.log(age > denis);
+console.log(age >= denis);
+console.log(age < denis);
+console.log(age <= denis);
+console.log(age == denis);
+
+//lesson3
