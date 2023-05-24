@@ -1,63 +1,84 @@
-const isSuited = 100 - 10 > 90 - 5;
-console.log(isSuited);
+const cookies = 0;
 
-// 100 - (12) 10 > (10) 90 - (12) 5
+if (cookies > 2) {
+  console.log("Bon appetit!");
+} else if (cookies == 0) {
+  console.log("Buy cookies");
+} else {
+  console.log("Don't eat");
+}
 
-const a = (25 + 5) / 3;
-console.log(a);
+const capital = 12000;
+const stavka = 0.07;
+const time = 2;
+const dengi = capital * (1 + stavka) ** time;
+const dom = 13500;
 
-let b;
-let c;
-c = b = 100;
-console.log(c);
-console.log(b);
+if (dengi >= dom) {
+  console.log(`Сможет купить, остаток после покупки: ${dengi - dom}`);
+} else {
+  console.log("Не сможет купить");
+}
 
-const number = 18; // Число
-const surName = "Петров"; // Строка
-const bulevo = true; // Булево значение
-const hz = undefined; // На задано значение
-let dat; // На задано значение
-let pusto = null; // Пустое значение
-const admin = Symbol("Admin"); // Уникальное неизменное значение
-const big = BigInt(999999999); // Работа с большими числами
+const someNumber = "1";
 
-let d = 5;
-let e = 5.6;
-console.log(typeof d);
-d = "list";
-console.log(typeof d);
-console.log(typeof bulevo);
-console.log(typeof hz);
-console.log(typeof pusto);
+if (someNumber === 10) {
+  console.log("Yes!");
+} else if (someNumber == 10) {
+  console.log("so-so");
+} else {
+  console.log("Does not match");
+}
 
-const a1 = "a";
-const b1 = "b";
-const c1 = "c";
-const c1b1a1 = a1 + b1 + c1;
-console.log(c1b1a1);
+// const q = prompt("Введите число");
+// if (Number(q) === Number) {
+//   console.log("Да");
+// }
 
-const a1b1c1 = `${a1} ${b1} ${c1}`; // const a1b1c1 = a1 + ' ' + b1 + ' ' + c1
-console.log(a1b1c1);
+const phone = "Samsung";
 
-const abc = `${a1}
-${b1}
-${a1b1c1}`;
-console.log(abc);
+if (phone === "Iphone") {
+  console.log("Айфон");
+} else if (phone === "Samsung") {
+  console.log("Самсунг");
+} else {
+  console.log("Что за телефон?");
+}
 
-const age = "25";
-console.log(Boolean(age) + 5);
-console.log(age - 10);
-const imya = "Denis";
-console.log(Number(imya) + 5);
-console.log(typeof NaN);
-const numbe = String(4) + 6;
-console.log(typeof numbe);
-console.log(Number("hei"));
+switch (phone) {
+  case "Iphone":
+    console.log("Айфон"); // phone === "Iphone"
+  case "Samsung":
+    console.log("Самсунг");
+    break;
+  case "Huawei":
+    console.log("Хуавей");
+    break;
+  default:
+    console.log("Что за телефон?");
+}
 
-console.log(Boolean(0));
-console.log(Boolean(""));
-console.log(Boolean(undefined));
-console.log(Boolean(null));
-console.log(Boolean(Number('')))
+console.log(true === true);
 
-//lesson4
+const доширак = 8;
+const накопил = 2;
+
+let ответ = накопил > доширак ? "Доширак" : "Без доширака";
+console.log(`${ответ}`);
+
+const otvet = prompt("Сколько будет 1+-2");
+
+switch (true) {
+  case Number(otvet) === -1:
+    console.log(`Да, ${otvet}`);
+    break;
+  case Number(otvet) === 3:
+    console.log(`Да, ${otvet}`);
+    break;
+  case otvet === "Что?":
+    console.log("Прошёл проверку");
+    break;
+  default:
+    console.log("Не прошёл проверку");
+    break;
+}
