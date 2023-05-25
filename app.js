@@ -1,95 +1,114 @@
-function func(a, b) {
-  let work = a * b;
-  console.log(`This is a:'${a}' and this is b:'${b}' `);
-  return;
-}
+const a = "a";
+const b = "b";
+const c = "c";
 
-func("First value of the function", "Second value of the function");
-console.log(func(2, 5));
+const abc = ["a", "b", "c"];
+const ab = [b, "c"];
+console.log(abc);
+console.log(abc[0]);
+console.log(abc[abc.length - 1]);
 
-const hidenFuction = function (Name) {
-  return Name;
-};
+console.log(abc.at(0));
+console.log(abc.at(-1));
 
-console.log(hidenFuction("1"));
+const aa = [1, 2, 3] + [1, 2, 3];
+console.log(aa);
 
-const strelka = (number) => number ** 2;
+const someWords = ["Hi", "World", "!"];
+console.log(someWords.includes("Hi"));
+console.log(someWords);
+someWords[0] = "Bye";
+console.log(someWords);
+someWords[4] = "ok";
+console.log(someWords);
+console.log(typeof someWords[3]);
 
-const strel = function (number) {
-  return console.log(number ** 2);
-};
-console.log(strel(3));
+someWords.push("addWords");
+console.log(someWords.push("addWords"));
 
-console.log();
-const thePowerOf = (num, power) => num ** power;
-console.log(thePowerOf(3, 2));
+someWords.unshift("Hey");
+console.log(someWords);
 
-function func(num, power = 2) {
-  const result = num ** power;
-  return result;
-}
-console.log(func(4));
+console.log(someWords.pop());
+console.log(someWords);
 
-function canBuyChips(money) {
-  if (money > 15) {
-    return true;
+console.log(someWords.shift());
+console.log(someWords);
+
+console.log(someWords.indexOf("World"));
+
+console.log(someWords.includes("World"));
+
+console.log(someWords.slice(2));
+console.log(someWords);
+
+console.log(someWords.slice(2, 4));
+console.log(someWords);
+
+console.log(someWords.slice(-3, -1));
+
+console.log(someWords.splice(3, 1));
+console.log(someWords.reverse());
+console.log(someWords);
+
+const arr = ["hey", "I"];
+
+console.log(someWords.concat(arr));
+console.log(someWords);
+
+const string = "Hey,i,am,fine";
+console.log(string.split(","));
+console.log(string);
+
+console.log(arr.join("-"));
+
+const cars = [];
+
+function addCar(Car) {
+  if (!cars.includes(Car) === true && Car) {
+    cars.push(Car);
   }
-  return false;
 }
 
-console.log(canBuyChips(20));
-
-const canBuyChips1 = (money) =>
-  money > 15 ? "Сможешь купить" : "Не сможешь купить";
-console.log(canBuyChips1(12));
-
-const THREE = 3;
-const TWO = 2;
-
-function func2(value) {
-  return value * TWO;
-}
-
-function func3(value) {
-  return value * THREE;
-}
-
-function func1(value1, value2) {
-  const three = value1 * THREE;
-  const two = value2 * TWO;
-  return three + two;
-}
-
-console.log(func1(10, 3));
-
-function func4(value2) {
-  return func2(3) + func3(value2);
-}
-
-console.log(func4(2, 3));
-
-function newPhone(age, work = false, money, pricePhone = 0) {
-  if (age > 24 && work == true) {
-    return money + 200 >= pricePhone;
-  } else if (age > 24 && !work == true) {
-    return money + 200 >= pricePhone;
+function deletedCar(Car) {
+  const index = cars.indexOf(Car);
+  if (index === -1) {
+    return;
   }
-  return money >= pricePhone;
+  return cars.splice(index, 1);
 }
 
-console.log(newPhone(25, "", 1400,1600));
-
-function howMoneyGive(age, work, money) {
-  if (age > 24 && work == true) {
-    return money + 200;
-  } else if (age > 24 && work == false) {
-    return money + 100;
+function Priority(Car) {
+  const PriorityCar = deletedCar(Car);
+  if (!PriorityCar) {
+    return;
   }
-  return money;
+  cars.unshift(PriorityCar[0]);
 }
 
-function buyNewPhone(age1, work1, money1, priceIphone) {
-  return howMoneyGive(age1, work1, money1) >= priceIphone;
+addCar("Car1");
+addCar("Car3");
+addCar("Car2");
+addCar("Car3");
+addCar("Car3");
+console.log(cars);
+
+const data = ["Data11", "Data22", "Data33"];
+
+const [Data1, _, Data3] = ["Data11", "Data22", "Data33"];
+
+console.log(Data1, Data3);
+
+const data1 = [1, 2, 3, 4, 5, 6, 7, 8];
+const [one, two, ...asd] = data1;
+console.log(asd);
+
+function func(url) {
+  const [https, _, cg,...webCat] = url.split('/');
+
+  console.log(`Протокол: ${https.split(':')[0]}`);
+  console.log(`Доменное имя: ${cg}`);
+  console.log(`Путь в сайте: /${webCat.join('/')}`);
 }
 
-console.log(buyNewPhone(25, false, 1400, 1500));
+func('https://chrome.google.com/webstore/category');
