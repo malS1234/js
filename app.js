@@ -1,114 +1,115 @@
-const a = "a";
-const b = "b";
-const c = "c";
+for (let i = 1; i < 10; i += 2) {
+  console.log(i);
+}
 
-const abc = ["a", "b", "c"];
-const ab = [b, "c"];
-console.log(abc);
-console.log(abc[0]);
-console.log(abc[abc.length - 1]);
+const arr = ["task1", "task2", "task3"];
 
-console.log(abc.at(0));
-console.log(abc.at(-1));
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] === "task2") {
+    break;
+  }
+  console.log(arr[i]);
+}
 
-const aa = [1, 2, 3] + [1, 2, 3];
-console.log(aa);
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] === "task2") {
+    continue;
+  }
+  console.log(arr[i]);
+}
 
-const someWords = ["Hi", "World", "!"];
-console.log(someWords.includes("Hi"));
-console.log(someWords);
-someWords[0] = "Bye";
-console.log(someWords);
-someWords[4] = "ok";
-console.log(someWords);
-console.log(typeof someWords[3]);
+const arr1 = ["!", "JS", "love", "I"];
+const arr11 = [];
+for (let i = arr1.length; i > 0; i--) {
+  arr11.push(arr1[i - 1]);
+}
+console.log(arr11.join(" "));
+console.log(arr1.reverse().join(" "));
 
-someWords.push("addWords");
-console.log(someWords.push("addWords"));
-
-someWords.unshift("Hey");
-console.log(someWords);
-
-console.log(someWords.pop());
-console.log(someWords);
-
-console.log(someWords.shift());
-console.log(someWords);
-
-console.log(someWords.indexOf("World"));
-
-console.log(someWords.includes("World"));
-
-console.log(someWords.slice(2));
-console.log(someWords);
-
-console.log(someWords.slice(2, 4));
-console.log(someWords);
-
-console.log(someWords.slice(-3, -1));
-
-console.log(someWords.splice(3, 1));
-console.log(someWords.reverse());
-console.log(someWords);
-
-const arr = ["hey", "I"];
-
-console.log(someWords.concat(arr));
-console.log(someWords);
-
-const string = "Hey,i,am,fine";
-console.log(string.split(","));
-console.log(string);
-
-console.log(arr.join("-"));
-
-const cars = [];
-
-function addCar(Car) {
-  if (!cars.includes(Car) === true && Car) {
-    cars.push(Car);
+for (let i = 1; i < 5; i++) {
+  console.log(`first loop - ${i}`);
+  for (let j = 1; j < 5; j++) {
+    console.log(`second loop - ${j}`);
   }
 }
 
-function deletedCar(Car) {
-  const index = cars.indexOf(Car);
-  if (index === -1) {
-    return;
+const arr2 = [
+  ["element1", "element2"],
+  ["element3", "element4"],
+];
+
+for (let i = 0; i < arr2.length; i++) {
+  for (let j = 0; j < arr2[i].length; j++) {
+    console.log(arr2[i][j]);
   }
-  return cars.splice(index, 1);
 }
 
-function Priority(Car) {
-  const PriorityCar = deletedCar(Car);
-  if (!PriorityCar) {
-    return;
+let i = 1;
+while (i < 4) {
+  console.log("i");
+  i++;
+}
+
+const arr3 = [1, 2, 3, 4];
+
+let number = 0;
+while (arr3[number] <= 4 && number < arr3.length) {
+  console.log(arr3[number]);
+  number++;
+}
+
+let variable = 11;
+do {
+  console.log(variable);
+  variable++;
+} while (variable < 13);
+
+for (let number of arr3) {
+  console.log(number);
+}
+
+for (let l in arr3) {
+  console.log(l);
+}
+
+const operations = [500, 100, -400, 200, 400, 100, 800];
+
+function total(arrOfNumber, initialAmount) {
+  let sum = initialAmount;
+  for (const number of arrOfNumber) {
+    sum += number;
   }
-  cars.unshift(PriorityCar[0]);
+  return sum;
 }
 
-addCar("Car1");
-addCar("Car3");
-addCar("Car2");
-addCar("Car3");
-addCar("Car3");
-console.log(cars);
-
-const data = ["Data11", "Data22", "Data33"];
-
-const [Data1, _, Data3] = ["Data11", "Data22", "Data33"];
-
-console.log(Data1, Data3);
-
-const data1 = [1, 2, 3, 4, 5, 6, 7, 8];
-const [one, two, ...asd] = data1;
-console.log(asd);
-
-function func(url) {
-  const [https, _, cg,...webCat] = url.split('/');
-
-  console.log(`Протокол: ${https.split(':')[0]}`);
-  console.log(`Доменное имя: ${cg}`);
-  console.log(`Путь в сайте: /${webCat.join('/')}`);
+function positiveBalance(arrOfNumber, initialAmount) {
+  let sum = initialAmount;
+  for (let number of arrOfNumber) {
+    sum += number;
+    if (sum < 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
-func('https://chrome.google.com/webstore/category');
+function average(arrOfNumber) {
+  let income = 0;
+  let expenditure = 0;
+  let i = 0;
+  let j = 0;
+  for (let number of arrOfNumber) {
+    if (number > 0) {
+      income += number;
+      i++;
+    } else if (number < 0) {
+      expenditure += number;
+      j++;
+    }
+  }
+  return [income / i, expenditure / j];
+}
+
+console.log(total(operations, 100));
+console.log(positiveBalance(operations, 100));
+console.log(average(operations));
