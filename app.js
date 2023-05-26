@@ -1,112 +1,62 @@
-function sum(a, b) {
-  return a + b;
-}
+const userName = "Nishnag Sinep Ivanovich ";
+console.log(userName[0]);
 
-function difference(a, b) {
-  return a - b;
-}
+console.log(userName.length);
+console.log(userName.indexOf("i"));
+console.log(userName.lastIndexOf("i"));
+console.log(userName.includes("i"));
 
-function func(a, b, fn) {
-  console.log(fn.name);
-  const res = fn(a, b);
-  return res;
-}
+console.log(userName.slice(8));
 
-console.log(func(3, 5, difference));
+console.log(userName.slice(0, userName.indexOf(" ")));
+console.log(userName.slice(userName.lastIndexOf(" ") + 1, userName.length));
 
-function multiple(number) {
-  return function (num) {
-    return num * number;
-  };
-}
+console.log(userName.startsWith("N"));
+console.log(userName.endsWith("N"));
 
-console.log(multiple(3)(4));
+console.log(userName.toLowerCase());
+console.log(userName.toUpperCase());
+console.log(userName.replace("N", "M"));
+console.log(userName.replace(/i/g, "D"));
 
-const func1 = (number1) => (number2) => number1 * number2;
-console.log(func1(3)(4));
+console.log(userName.trim());
 
-const arr = [3, 5, 2, 7];
+console.log(isNaN(Number("311")));
 
-for (const [i] of arr.entries()) {
-  console.log(i);
-}
-
-const [a] = arr.entries();
-console.log(a);
-[
-  [0, 3],
-  [1, 5],
-  [2, 2],
-  [3, 7],
-];
-
-for (const [index, element] of arr.entries()) {
-  console.log(index, element);
-}
-
-arr.forEach((el, index) => console.log(el, index));
-
-const arr1 = [0, 0, -1, -2, 5, 0, -1, -1];
-
-const number4 = arr1
-  .filter((number) => number > 0)
-  .map((number) => number ** 2);
-
-console.log(number4);
-
-const arr11 = [
-  [1, 2],
-  [3, -4],
-  [4, 5],
-  [0, 0],
-  [3, -6],
-];
-
-const positiveDifference = arr11
-  .map((number) => number[1] - number[0])
-  .filter((DifferenceNumber) => DifferenceNumber > 0);
-console.log(positiveDifference);
-
-const sum1 = arr1.reduce((acc, value) => {
-  if (acc > value) {
-    return acc;
+function rightPhoneNumber(phoneNumber) {
+  phoneNumber = phoneNumber.trim();
+  phoneNumber = phoneNumber.replace('+7', '8');
+  phoneNumber = phoneNumber.replace('+7', '8');
+  if (!phoneNumber.startsWith('8')) {
+    return false;
   }
-  return value;
-}, 0);
-console.log(sum1);
-
-const arr123 = [3, -7, -1, 4, 7, 2];
-
-const asd = arr123.reduce((acc, value, i) => {
-  if (i < arr123.length - 1) {
-    return acc + value;
+  phoneNumber = phoneNumber.replaceAll('(', '');
+  phoneNumber = phoneNumber.replaceAll('-', '');
+  phoneNumber = phoneNumber.replaceAll(' ', '');
+  phoneNumber = phoneNumber.replaceAll(')', '');
+  if (phoneNumber.length != 11 ) {
+    return false;
   }
-  return (acc + value) / (i + 1);
-}, 0);
-
-console.log(asd);
-
-console.log(arr123.find((number) => number > 5));
-console.log(arr123.findIndex((number) => number > 4));
-
-function some(arr, element) {
-  return -1 === arr.findIndex((el) => el === element) ? false : true;
+  for (const symbol of phoneNumber) {
+    if (isNaN(Number(symbol))) {
+      return false;
+    }
+  }
+  return phoneNumber;
 }
-console.log(some(arr123, 2));
 
-console.log(arr.some((el) => el === 2));
+console.log(rightPhoneNumber('89(9)999(9)9999'))
 
-const fl = arr11.flat();
-console.log(fl);
-console.log(arr11.flatMap((el) => el.splice(0, 1)));
+const [name1, familyName, sureName] = userName.split(' ');
+console.log(name1);
 
-console.log(arr123.sort((a, b) => -(a - b)));
-
-const arr1234 = new Array(3);
-arr1234.fill(10, -2, -1);
-console.log(arr1234);
+console.log(userName.padStart(40, '??'));
+console.log(userName.padEnd(40, '??'));
+console.log(userName.repeat(2));
 
 
 
-console.log(Array.from({length: 5}, (el,i) => i));
-console.log(new Array(5).fill(2, 0, 3).fill(5, 2, 5).map((el,i) => el*(i+1)));
+function hide(number) {
+  return number.slice(-4).padStart(number.length,'*');
+}
+console.log(hide('1233213121233232'))
