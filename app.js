@@ -1,115 +1,112 @@
-for (let i = 1; i < 10; i += 2) {
+function sum(a, b) {
+  return a + b;
+}
+
+function difference(a, b) {
+  return a - b;
+}
+
+function func(a, b, fn) {
+  console.log(fn.name);
+  const res = fn(a, b);
+  return res;
+}
+
+console.log(func(3, 5, difference));
+
+function multiple(number) {
+  return function (num) {
+    return num * number;
+  };
+}
+
+console.log(multiple(3)(4));
+
+const func1 = (number1) => (number2) => number1 * number2;
+console.log(func1(3)(4));
+
+const arr = [3, 5, 2, 7];
+
+for (const [i] of arr.entries()) {
   console.log(i);
 }
 
-const arr = ["task1", "task2", "task3"];
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] === "task2") {
-    break;
-  }
-  console.log(arr[i]);
-}
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] === "task2") {
-    continue;
-  }
-  console.log(arr[i]);
-}
-
-const arr1 = ["!", "JS", "love", "I"];
-const arr11 = [];
-for (let i = arr1.length; i > 0; i--) {
-  arr11.push(arr1[i - 1]);
-}
-console.log(arr11.join(" "));
-console.log(arr1.reverse().join(" "));
-
-for (let i = 1; i < 5; i++) {
-  console.log(`first loop - ${i}`);
-  for (let j = 1; j < 5; j++) {
-    console.log(`second loop - ${j}`);
-  }
-}
-
-const arr2 = [
-  ["element1", "element2"],
-  ["element3", "element4"],
+const [a] = arr.entries();
+console.log(a);
+[
+  [0, 3],
+  [1, 5],
+  [2, 2],
+  [3, 7],
 ];
 
-for (let i = 0; i < arr2.length; i++) {
-  for (let j = 0; j < arr2[i].length; j++) {
-    console.log(arr2[i][j]);
+for (const [index, element] of arr.entries()) {
+  console.log(index, element);
+}
+
+arr.forEach((el, index) => console.log(el, index));
+
+const arr1 = [0, 0, -1, -2, 5, 0, -1, -1];
+
+const number4 = arr1
+  .filter((number) => number > 0)
+  .map((number) => number ** 2);
+
+console.log(number4);
+
+const arr11 = [
+  [1, 2],
+  [3, -4],
+  [4, 5],
+  [0, 0],
+  [3, -6],
+];
+
+const positiveDifference = arr11
+  .map((number) => number[1] - number[0])
+  .filter((DifferenceNumber) => DifferenceNumber > 0);
+console.log(positiveDifference);
+
+const sum1 = arr1.reduce((acc, value) => {
+  if (acc > value) {
+    return acc;
   }
-}
+  return value;
+}, 0);
+console.log(sum1);
 
-let i = 1;
-while (i < 4) {
-  console.log("i");
-  i++;
-}
+const arr123 = [3, -7, -1, 4, 7, 2];
 
-const arr3 = [1, 2, 3, 4];
-
-let number = 0;
-while (arr3[number] <= 4 && number < arr3.length) {
-  console.log(arr3[number]);
-  number++;
-}
-
-let variable = 11;
-do {
-  console.log(variable);
-  variable++;
-} while (variable < 13);
-
-for (let number of arr3) {
-  console.log(number);
-}
-
-for (let l in arr3) {
-  console.log(l);
-}
-
-const operations = [500, 100, -400, 200, 400, 100, 800];
-
-function total(arrOfNumber, initialAmount) {
-  let sum = initialAmount;
-  for (const number of arrOfNumber) {
-    sum += number;
+const asd = arr123.reduce((acc, value, i) => {
+  if (i < arr123.length - 1) {
+    return acc + value;
   }
-  return sum;
-}
+  return (acc + value) / (i + 1);
+}, 0);
 
-function positiveBalance(arrOfNumber, initialAmount) {
-  let sum = initialAmount;
-  for (let number of arrOfNumber) {
-    sum += number;
-    if (sum < 0) {
-      return false;
-    }
-  }
-  return true;
-}
+console.log(asd);
 
-function average(arrOfNumber) {
-  let income = 0;
-  let expenditure = 0;
-  let i = 0;
-  let j = 0;
-  for (let number of arrOfNumber) {
-    if (number > 0) {
-      income += number;
-      i++;
-    } else if (number < 0) {
-      expenditure += number;
-      j++;
-    }
-  }
-  return [income / i, expenditure / j];
-}
+console.log(arr123.find((number) => number > 5));
+console.log(arr123.findIndex((number) => number > 4));
 
-console.log(total(operations, 100));
-console.log(positiveBalance(operations, 100));
-console.log(average(operations));
+function some(arr, element) {
+  return -1 === arr.findIndex((el) => el === element) ? false : true;
+}
+console.log(some(arr123, 2));
+
+console.log(arr.some((el) => el === 2));
+
+const fl = arr11.flat();
+console.log(fl);
+console.log(arr11.flatMap((el) => el.splice(0, 1)));
+
+console.log(arr123.sort((a, b) => -(a - b)));
+
+const arr1234 = new Array(3);
+arr1234.fill(10, -2, -1);
+console.log(arr1234);
+
+
+
+console.log(Array.from({length: 5}, (el,i) => i));
+console.log(new Array(5).fill(2, 0, 3).fill(5, 2, 5).map((el,i) => el*(i+1)));
