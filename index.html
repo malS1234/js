@@ -4,7 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ДЖАВА СКРИПТ</title>
-    <script src="app.js"></script>
+    <style>
+      .notification {
+        display: none;
+      }
+      .notification--active {
+        display: block;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="panel">HEY</div>
+    <input class="inputs" onkeydown="inputChange(event)" />
+    <button class="button" onclick="submitForm()">Yes</button>
+    <div class="notification notification-active">hey</div>
+    <div>dasads</div>
+    <div class="one">
+      <span>Элемент 1</span>
+    </div>
+    <div class="one">
+      <span> Элемент 2</span>
+    </div>
+    <div id="two">Элемент 3</div>
+    <div>
+      <span user-id="9"> Элемент 4</span>
+    </div>
+    <div class="test"></div>
+    <script src="app.js"></script>
+  </body>
 </html>

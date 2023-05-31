@@ -1,3 +1,8 @@
 {
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "notebook.output.fontFamily": "JetBrains Mono",
+  "notebook.output.fontSize": 0,
+  "notebook.output.lineHeight": 0
 }
