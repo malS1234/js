@@ -1,117 +1,104 @@
 'use strict';
-let variable = 10;
 
-if (true) {
-  variable = 3;
-}
+const bmw = {
+  band: 'bmw',
+  model: 'm3',
+  year: 2023,
+  damages: [],
+  addDamage(part, degree) {
+    console.log(
+      `The car: ${this.band} ${this.model} ${this.year} added: - damage: ${part}, degree of damage: ${degree}`
+    );
+    this.damages.push({ part, degree });
+  }
+};
 
-console.log(variable);
+bmw.addDamage('part1', 2);
 
-let successMessage = 'success';
+const toyota = {
+  band: 'toyota',
+  model: 'corolla',
+  year: 2023,
+  damages: []
+};
+
+toyota.addDamage = bmw.addDamage;
+
+toyota.addDamage('part2', 4);
+
+const addDamageFunc = bmw.addDamage;
+
+addDamageFunc.call(toyota, 'part3', 10);
+
+addDamageFunc.apply(bmw, ['part4', 5]);
+
+const carManipulation = {
+  addDamage(part, degree) {
+    console.log(`Добавить повреждение на ${this.band} ${this.model}`);
+    this.damages.push({ part, degree });
+  }
+};
+
+const addDamageToyota = carManipulation.addDamage.bind(toyota, 'part10');
+
+addDamageToyota(3);
+console.log(toyota);
+addDamageToyota(3);
+
 const user = {
-  name: 'Name1',
-  skills: []
+  password: '1233213'
 };
 
-function addSkills(user, skill) {
-  if (skill == 'admin') {
-    const message = 'error';
-    console.log(message);
-    return user;
-  }
-  user.skills.push(skill);
-  let successMessage = '123';
-  console.log(successMessage);
-
-  function logSkill() {
-    console.log(user.skills);
-  }
-  logSkill();
-  return user;
+function removePassword(reset) {
+  if (reset) {
+    this.password = undefined;
+  } else this.password = '1';
 }
 
-console.log(addSkills(user, 'skill1'));
+const fRemovePassword = removePassword.bind(user);
+fRemovePassword();
+console.log(user.password);
 
-function aumNum() {
-  console.log(this);
-  return;
+(function () {
+  console.log('Start');
+})();
+
+function changeBalance() {
+  let balance = 0;
+  return function (sum) {
+    balance += sum;
+    console.log(balance);
+  };
 }
 
-const aumNum2 = () => {
-  console.log(this);
-};
-aumNum2();
+const change = changeBalance();
+change(100);
+change(100);
 
-const user123 = {
-  name: 'Vova',
-  lastName: 'Avov',
-  getFullName: function () {
-    console.log(this);
-    return this.name + ' ' + this.lastName;
+console.dir(change);
+
+const userInfo = {
+  balance: 0,
+  operation: 0,
+  increse(sum) {
+    this.balance += sum;
+    this.operation++;
   }
 };
 
-const user2 = {
-  name: 'Denis',
-  lastName: 'Siden'
-};
-
-user2.getFullName = user123.getFullName;
-user2.getFullName();
-
-const func = user2.getFullName;
-
-const user1234 = {
-  name: 'Name1',
-  lastName: 'LastName1',
-  age: 25,
-  this1: this,
-  getUserInfo: function () {
-    console.log(`${this.name} ${this.lastName}`);
-
-    const is18 = () => {
-      if (this.age >= 18) {
-        console.log('Есть 18 лет');
-        console.log(this);
-      } else {
-        console.log('Нет 18-ти лет');
-      }
-    };
-    is18();
-  },
-  getUserInfoArrow: () => {
-    console.log(this);
-    console.log(`${this.name} ${this.lastName}`);
-  }
-};
-
-user1234.getUserInfo();
-user1234.getUserInfoArrow();
-console.log(user1234.this1);
-
-function sumNum(num1, num2) {
-  console.log(arguments);
-  return num1 + num2;
+function addUser() {
+  const addUser = {
+    ...userInfo
+  };
+  return function () {
+    return addUser;
+  };
 }
 
-console.log(sumNum(1, 4));
+const user1 = addUser();
+console.log(user1().increse(150));
+console.log(user1());
 
-const company = {
-  name: 'Name1',
-  employees: [{ 
-    showEmp: function () {
-      return this.name
-    },
-    name: 'eName1' }],
-  ceo: {
-    name: 'cName1',
-    showCeo: () => {
-      return this.name;
-    }
-  },
-  showName: function () {
-    return this.name;
-  }
-};
-
-console.log(company.employees.map(el => el.showEmp()));
+const user2 = addUser();
+console.log(user2().increse(350));
+console.log(user2());
